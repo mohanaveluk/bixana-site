@@ -3,9 +3,7 @@ FROM node:20-alpine AS node
 WORKDIR /app
 COPY . .
 RUN npm install --force
-RUN export NODE_OPTIONS=--openssl-legacy-provider
-RUN npm run build-prod
-COPY ./web.config /app/dist/bixana-site
+RUN NODE_OPTIONS=--openssl-legacy-provider npm run build-prod
 COPY ./web.config /app/dist/bixana-site
 
 #stage 2
